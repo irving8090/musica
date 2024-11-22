@@ -7,6 +7,143 @@
     window.publytics = window.publytics || function() { (window.publytics.q = window.publytics.q || []).push(arguments) };
     publytics('pageview');
 </script>
+    <script>
+    publytics('EventName', {props: {prop1: 'content1', prop2: 'content2'}});
+
+    //OR
+
+    publytics('EventName');
+</script>
+    <script defer data-domain="irving8090.github.io/pcSyRh" src="https://api.publytics.net/js/script.manual.min.js"></script>
+<script>
+    window.publytics = window.publytics || function() { (window.publytics.q = window.publytics.q || []).push(arguments) };
+    publytics('pageview', {props: {article_id: 123456, author_id: 101, article_title: "example title"}});
+</script>
+    <script defer data-domain="irving8090.github.io/pcSyRh" src="https://api.publytics.net/js/script.manual.min.js"></script>
+<script>
+    window.publytics = window.publytics || function() { (window.publytics.q = window.publytics.q || []).push(arguments) };
+<?php
+if (is_single()) {
+?>
+publytics('pageview', {props: {
+    author_id: <?php echo get_the_author_meta('ID', get_post_field( 'post_author' )); ?>,
+    author_name: "<?php echo get_the_author_meta('nicename', get_post_field( 'post_author' )); ?>",
+    article_id: <?php echo get_the_ID(); ?>,
+    article_title: "<?php echo get_the_title(); ?>",
+    category_id: <?php echo get_the_category()[0]->term_id; ?>,
+    category_name: "<?php echo get_the_category()[0]->name; ?>",
+    date: "<?php echo get_the_date('Y-m-d'); ?>",
+    month_year: "<?php echo get_the_date('Y-m'); ?>",
+    year: "<?php echo get_the_date('Y'); ?>"
+}});
+<?php
+} else {
+?>
+publytics('pageview');
+<?php
+}
+?>
+
+</script>
+    [ADINSERTER AMP]
+<?php
+if (is_single()) {
+?>
+<amp-analytics>
+    <script type="application/json">
+        {
+            "requests": {
+                "event": "https://api.publytics.net/events"
+            },
+            "extraUrlParams": {
+                "r": "${documentReferrer}",
+                "u": "<?php echo get_the_permalink(); ?>amp/",
+                "w": 400,
+                "d": "irving8090.github.io/pcSyRh"
+            },
+            "triggers": {
+                "trackPageview": {
+                    "on": "visible",
+                    "request": "event",
+                    "extraUrlParams": {
+                        "n": "pageview",
+                        "p": {
+                            "amp":true,
+                            "author_id": <?php echo get_the_author_meta('ID', get_post_field( 'post_author' )); ?>,
+                            "author_name": "<?php echo get_the_author_meta('nicename', get_post_field( 'post_author' )); ?>",
+                            "article_id": <?php echo get_the_ID(); ?>,
+                            "article_title": "<?php echo get_the_title(); ?>",
+                            "category_id": <?php echo get_the_category()[0]->term_id; ?>,
+                            "category_name": "<?php echo get_the_category()[0]->name; ?>",
+                            "date": "<?php echo get_the_date('Y-m-d'); ?>",
+                            "month_year": "<?php echo get_the_date('Y-m'); ?>",
+                            "year": "<?php echo get_the_date('Y'); ?>"
+                        }
+                    }
+                }
+            },
+            "transport": {
+                "beacon": true,
+                "xhrpost": true,
+                "image": false,
+                "useBody": true
+            }
+        }
+    </script>
+</amp-analytics>
+<?php
+}
+?>
+    <amp-analytics>
+    <script type="application/json">
+        {
+            "requests": {
+                "event": "https://api.publytics.net/events"
+            },
+            "extraUrlParams": {
+                "r": "${documentReferrer}",
+                "u": "SOURCE_URL",
+                "w": 400,
+                "d": "irving8090.github.io/pcSyRh"
+            },
+            "triggers": {
+                "trackPageview": {
+                    "on": "visible",
+                    "request": "event",
+                    "extraUrlParams": {
+                        "n": "pageview",
+                        "p": {
+                                "amp":true,
+                                "article_title": "TITLE"
+                             }
+                    }
+                },
+                "trackScrollThrough":{
+                    "on":"amp-next-page-scroll",
+                    "useInitialPageSize": true,
+                    "request":"event",
+                    "extraUrlParams": {
+                      "n": "amp_next_page_pageview"
+                    }
+                },
+                "trackClickThrough":{
+                    "on":"amp-next-page-click",
+                    "useInitialPageSize": true,
+                    "request":"event",
+                    "extraUrlParams": {
+                      "n": "amp_next_page_pageview"
+                    }
+                }
+            },
+            "transport": {
+                "beacon": true,
+                "xhrpost": true,
+                "image": false,
+                "useBody": true
+            }
+        }
+    </script>
+</amp-analytics>
     <meta charset="utf-8">
     <title>MUSIC AND THE WORLD</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
